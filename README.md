@@ -1,4 +1,4 @@
-To start the game, run the GAME_OF_LIFE.py file. Note that there need to be several libraries installed.
+To start the game, run the GAME_OF_LIFE.py file. Note that there need to be several libraries installed, like openCV, numpy and dlib.
 
 In game press ESC to exit while in the OpenCV2 window.
 
