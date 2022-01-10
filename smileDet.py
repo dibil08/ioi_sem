@@ -3,16 +3,15 @@ import dlib
 from imutils import face_utils
 from scipy.spatial import distance as dist
 
-def faceLandmarks(im):
+def faceLandmarks(im,faceDetector,landmarkDetector,debug=False):
 
     # Path for the detection model, you can download it from here: https://github.com/italojs/facial-landmarks-recognition/blob/master/shape_predictor_68_face_landmarks.dat
-    PREDICTOR_PATH = "shape_predictor_68_face_landmarks.dat"
-    
     # Create object to detect the face
-    faceDetector = dlib.get_frontal_face_detector()
+   
 
     # Create object to detect the facial landmarks
-    landmarkDetector = dlib.shape_predictor(PREDICTOR_PATH)
+    
+
     # Detect faces
     faceRects = faceDetector(im, 0)
 

@@ -1,6 +1,6 @@
 
 from abc import ABC, abstractmethod
-
+import time
 class Rule(ABC):
     @abstractmethod
     def apply_rules(self, grid, max_size, get_neighbours):
@@ -28,6 +28,9 @@ class DenseNumpyRules(Rule):
 
 
 class SparseSetRules(Rule):
+    def __init__(self,lifePoints):
+        self.lifePoints=lifePoints
+        
     def apply_rules(self, grid, max_size, get_neighbours):
         #grid = state.grid
         counter = {}
@@ -41,8 +44,9 @@ class SparseSetRules(Rule):
                 else:
                     counter[n] += 1
         for c in counter:
-            if (counter[c] < 2 or counter[c] > 3):
-                grid.discard(c)
+            point = (c[0],c[1])
+            if (counter[c] < 2 or counter[c] > 3):                
+                        grid.pop(point,None)
             if counter[c] == 3:
-                grid.add(c)
+                grid[(c[0],c[1])]=self.lifePoints
         return grid
